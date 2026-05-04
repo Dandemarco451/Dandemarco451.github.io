@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniel Demarco, MBA, CSM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #112040;
+      --navy-light: #1a3058;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --gold-pale: #f5e8c0;
+      --white: #f9f7f2;
+      --muted: #8899aa;
+      --text: #d4dde8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background-color: var(--navy);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 22, 40, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    }
+
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ─── HERO ────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0 6rem;
+      gap: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.07) 0%, transparent 65%),
+        radial-gradient(ellipse at 10% 80%, rgba(17,32,64,0.9) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-text { position: relative; z-index: 2; }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+      font-weight: 500;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-name span {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-credentials {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-title {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      margin-bottom: 2.4rem;
+      text-transform: uppercase;
+    }
+
+    .hero-summary {
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.8;
+      max-width: 520px;
+      margin-bottom: 2.8rem;
+      font-weight: 300;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 0.85rem 2.2rem;
+      background: var(--gold);
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: background 0.25s, transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      padding: 0.85rem 2.2rem;
+      border: 1px solid rgba(201,168,76,0.5);
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: border-color 0.25s, color 0.25s, transform 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    /* ─── HERO PHOTO ──────────────────────── */
+    .hero-photo-wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+
+    .hero-photo-frame {
+      position: relative;
+      width: 420px;
+      max-width: 100%;
+    }
+
+    .hero-photo-frame::before {
+      content: '';
+      position: absolute;
+      top: -18px; right: -18px;
+      width: 100%; height: 100%;
+      border: 1px solid rgba(201,168,76,0.35);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-photo-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--navy) 0%, transparent 40%);
+      z-index: 1;
+    }
+
+    .hero-photo-frame img {
+      width: 100%;
+      display: block;
+      filter: grayscale(10%) contrast(1.05);
+      position: relative;
+      z-index: 0;
+    }
+
+    .gold-line {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ─── SECTIONS ────────────────────────── */
+    section {
+      padding: 7rem 6rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.4rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .section-divider {
+      width: 50px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem 0 3rem;
+    }
+
+    /* ─── ABOUT ───────────────────────────── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .about-highlight {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+
+    .about-body {
+      font-size: 0.97rem;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.9;
+    }
+
+    .achievement-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .achievement-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201,168,76,0.15);
+      padding: 1.8rem 1.5rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .achievement-card:hover {
+      border-color: rgba(201,168,76,0.45);
+      transform: translateY(-4px);
+    }
+
+    .card-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    /* ─── EXPERTISE ───────────────────────── */
+    #expertise {
+      background: var(--navy-mid);
+      max-width: 100%;
+      padding: 6rem;
+    }
+
+    #expertise-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .skill-group {
+      border-left: 2px solid rgba(201,168,76,0.25);
+      padding-left: 1.5rem;
+    }
+
+    .skill-group-title {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-tag {
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      color: var(--text);
+      padding: 0.35rem 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: rgba(201,168,76,0.18);
+      border-color: rgba(201,168,76,0.5);
+    }
+
+    /* ─── EXPERIENCE ──────────────────────── */
+    .timeline {
+      position: relative;
+      padding-left: 2.5rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.5rem;
+      top: 8px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 12px rgba(201,168,76,0.5);
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.4rem;
+      gap: 1rem;
+    }
+
+    .job-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .job-date {
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      white-space: nowrap;
+      margin-top: 0.3rem;
+    }
+
+    .job-company {
+      font-size: 0.85rem;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+      font-weight: 500;
+    }
+
+    .job-desc {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    .job-bullets {
+      margin-top: 0.9rem;
+      padding-left: 1.2rem;
+      list-style: none;
+    }
+
+    .job-bullets li {
+      position: relative;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 0.45rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .job-bullets li::before {
+      content: '▸';
+      color: var(--gold);
+      position: absolute;
+      left: -1.2rem;
+      font-size: 0.7rem;
+      top: 0.28rem;
+    }
+
+    /* ─── EDUCATION ───────────────────────── */
+    #education {
+      background: var(--navy-mid);
+      max-width: 100%;
+      padding: 6rem;
+    }
+
+    #education-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .edu-card {
+      background: var(--navy);
+      border: 1px solid rgba(201,168,76,0.15);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .edu-card:hover {
+      border-color: rgba(201,168,76,0.45);
+      transform: translateY(-4px);
+    }
+
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .edu-badge {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.2);
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+    }
+
+    .edu-degree {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .edu-school {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .edu-detail {
+      font-size: 0.92rem;
+      color: var(--text);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .edu-highlight {
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    /* ─── VENTURES ────────────────────────── */
+    .ventures-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .venture-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201,168,76,0.12);
+      padding: 2.5rem;
+      text-decoration: none;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+      group: true;
+    }
+
+    .venture-card:hover {
+      border-color: rgba(201,168,76,0.4);
+      transform: translateY(-5px);
+      background: var(--navy-light);
+    }
+
+    .venture-card::after {
+      content: '↗';
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      color: var(--gold);
+      font-size: 1.2rem;
+      opacity: 0;
+      transition: opacity 0.25s, transform 0.25s;
+    }
+
+    .venture-card:hover::after {
+      opacity: 1;
+      transform: translate(3px, -3px);
+    }
+
+    .venture-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .venture-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .venture-url {
+      font-size: 0.72rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .venture-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ─── SOCIAL / CONNECT ────────────────── */
+    .connect-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem 1.8rem;
+      background: transparent;
+      border: 1px solid rgba(201,168,76,0.2);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      transition: all 0.25s;
+    }
+
+    .social-link:hover {
+      background: rgba(201,168,76,0.08);
+      border-color: var(--gold);
+      color: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .social-icon {
+      font-size: 1rem;
+    }
+
+    /* ─── CONTACT ─────────────────────────── */
+    #contact {
+      background: var(--navy-mid);
+      max-width: 100%;
+      padding: 6rem;
+      text-align: center;
+    }
+
+    #contact-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .contact-email {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--gold);
+      text-decoration: none;
+      display: block;
+      margin: 2rem 0;
+      transition: color 0.25s;
+    }
+
+    .contact-email:hover { color: var(--gold-light); }
+
+    .contact-phone {
+      font-size: 1rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── FOOTER ──────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 2.5rem;
+      border-top: 1px solid rgba(201,168,76,0.1);
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── ANIMATIONS ──────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-text > * {
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-eyebrow  { animation-delay: 0.1s; }
+    .hero-name     { animation-delay: 0.2s; }
+    .hero-credentials { animation-delay: 0.3s; }
+    .hero-title    { animation-delay: 0.4s; }
+    .hero-summary  { animation-delay: 0.5s; }
+    .hero-cta-group { animation-delay: 0.6s; }
+
+    .hero-photo-wrap {
+      animation: fadeUp 0.9s ease 0.3s both;
+    }
+
+    /* ─── RESPONSIVE ──────────────────────── */
+    @media (max-width: 960px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero { grid-template-columns: 1fr; padding: 6rem 2rem 3rem; text-align: center; }
+      .hero-photo-wrap { justify-content: center; order: -1; }
+      .hero-photo-frame { width: 280px; }
+      .hero-summary { max-width: 100%; margin-left: auto; margin-right: auto; }
+      .hero-cta-group { justify-content: center; }
+      section, #expertise, #education, #contact { padding: 4rem 2rem; }
+      #about { grid-template-columns: 1fr; gap: 3rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .ventures-grid { grid-template-columns: 1fr; }
+      .achievement-cards { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero-name { font-size: 2.8rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .achievement-cards { grid-template-columns: 1fr; }
+      .connect-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-name">Daniel Demarco, MBA, CSM</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#expertise">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#ventures">Ventures</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-text">
+      <div class="hero-eyebrow">IT Management · Project Management · Business Analytics</div>
+      <h1 class="hero-name">Daniel<br><span>Demarco</span></h1>
+      <div class="hero-credentials">MBA, CSM</div>
+      <div class="hero-title">Sr. Home Lending Advisor &amp; Operations Team Lead · NMLS# 1202753</div>
+      <p class="hero-summary">
+        Results-driven professional with 15+ years in sales, finance, and leadership — now channeling that expertise into project management and business analytics. 2 year self paced IT Management MBA completed in 7 months, with NSLS honors. Certified Scrum Master.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#experience" class="btn-primary">View Experience</a>
+        <a href="https://www.linkedin.com/in/dandemarco451" target="_blank" class="btn-outline">LinkedIn Profile</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-frame">
+        <img src="https://raw.githubusercontent.com/Dandemarco451/Dandemarco451.github.io/main/Dan_Fancy_Blue_Suit.png" alt="Daniel Demarco" />
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div>
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">Where Finance<br>Meets Technology</h2>
+      <div class="section-divider"></div>
+      <p class="about-highlight">
+        I bridge the gap between business strategy and technology — combining over 15 years of high-stakes financial leadership with a freshly earned MBA in IT Management and Certified Scrum Master credentials.
+      </p>
+      <p class="about-body">
+        My career has taken me from closing $50M+ in mortgage loans at Quicken Loans to leading operations teams at JPMorgan Chase, where I implemented data-driven process improvements, mentored new hires, and delivered top-tier client satisfaction scores. Now, I'm channeling that proven leadership directly into project management and business analysis roles — bringing real-world financial acumen that few PM candidates can match.
+      </p>
+    </div>
+    <div class="achievement-cards">
+      <div class="achievement-card">
+        <div class="card-number">15+</div>
+        <div class="card-label">Years of Leadership, Banking, and Finance Experience</div>
+      </div>
+      <div class="achievement-card">
+        <div class="card-number">7<span style="font-size:1.5rem;">mo</span></div>
+        <div class="card-label">MBA Completed in Record Time</div>
+      </div>
+      <div class="achievement-card">
+        <div class="card-number">$750M+</div>
+        <div class="card-label">In Total Lifetime Closed Loans</div>
+      </div>
+      <div class="achievement-card">
+        <div class="card-number">Top<span style="font-size:1.5rem;"> 10%</span></div>
+        <div class="card-label">Bank of America Pinnacle Club Honoree</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <div id="expertise">
+    <div id="expertise-inner">
+      <div class="section-label">Capabilities</div>
+      <h2 class="section-title">Expertise &amp; Technical Skills</h2>
+      <div class="section-divider"></div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <div class="skill-group-title">Project &amp; Agile</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Certified Scrum Master (CSM)</span>
+            <span class="skill-tag">JIRA</span>
+            <span class="skill-tag">Agile Methodology</span>
+            <span class="skill-tag">Process Optimization</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Data &amp; Analytics</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Tableau</span>
+            <span class="skill-tag">Excel (Advanced)</span>
+            <span class="skill-tag">PowerPoint</span>
+            <span class="skill-tag">Business Analysis</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Cloud &amp; CRM</div>
+          <div class="skill-tags">
+            <span class="skill-tag">AWS Cloud Practitioner</span>
+            <span class="skill-tag">Salesforce</span>
+            <span class="skill-tag">DealerTrack</span>
+            <span class="skill-tag">Encompass</span>
+            <span class="skill-tag">Reynolds &amp; Reynolds</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Finance &amp; Compliance</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Risk Management</span>
+            <span class="skill-tag">Corporate Finance</span>
+            <span class="skill-tag">RESPA / TILA / ECOA</span>
+            <span class="skill-tag">Banking Compliance</span>
+            <span class="skill-tag">Mortgage Law</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Strategy &amp; Leadership</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Sales Development</span>
+            <span class="skill-tag">Team Training &amp; Mentorship</span>
+            <span class="skill-tag">Marketing Research</span>
+            <span class="skill-tag">Digital Marketing</span>
+            <span class="skill-tag">Strategic Planning</span>
+            <span class="skill-tag">Servant Leadership</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Financial Products and Strengths</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Conventional Financing – Conforming &amp; Jumbo Loans</span>
+            <span class="skill-tag">FHA Loans</span>
+            <span class="skill-tag">VA Loans</span>
+            <span class="skill-tag">Fixed and Adjustable-Rate Financing</span>
+            <span class="skill-tag">Construction Loan Refinancing</span>
+            <span class="skill-tag">I/O Financing</span>
+            <span class="skill-tag">HELOC</span>
+            <span class="skill-tag">Trusts &amp; Estates Analysis</span>
+            <span class="skill-tag">Complex Income Analysis</span>
+            <span class="skill-tag">Loan Origination</span>
+            <span class="skill-tag">Private Bank Clients</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">Career History</div>
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="section-divider"></div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Sr. Home Lending Advisor &amp; Operations Client Analyst / Team Lead</div>
+            <div class="job-company">JPMorgan Chase &amp; Co · Tempe, AZ</div>
+          </div>
+          <div class="job-date">Nov 2018 – Present</div>
+        </div>
+        <p class="job-desc">Manage a high-volume pipeline of Private Bank and high-net-worth clients with complex loan structures and products, leveraging data-driven insights to optimize origination from application to closing. Exercise risk management principles on every deal to protect the bank.</p>
+        <ul class="job-bullets">
+          <li>Streamline processes, confidently implement solutions, and lead team training and reporting</li>
+          <li>Achieved highest customer and realtor satisfaction scores via analytics-driven insights</li>
+          <li>Train and mentor new hires utilizing a decade of experience and digital learning tools</li>
+          <li>Deep expertise in loan products, underwriting, and regulatory compliance (RESPA, TILA, ECOA)</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Mortgage Loan Officer</div>
+            <div class="job-company">Bank of America · Chandler, AZ</div>
+          </div>
+          <div class="job-date">Jan 2016 – June 2018</div>
+        </div>
+        <p class="job-desc">Advised clients on home purchases, refinances, and HELOCs. Built strong partnerships with realtors, builders, and internal teams to streamline the homebuying process.</p>
+        <ul class="job-bullets">
+          <li>Pinnacle Club Honoree (2017) – Top 10% in company-wide sales</li>
+          <li>Site Record Holder – 141 &amp; 144 HELOC applications submitted in April &amp; May 2016</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Mortgage Loan Officer</div>
+            <div class="job-company">Quicken Loans · Scottsdale, AZ</div>
+          </div>
+          <div class="job-date">May 2014 – Aug 2015</div>
+        </div>
+        <p class="job-desc">Generated over $50M in closed loans by proactively securing new mortgage business and guiding clients through refinancing benefits.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Sales &amp; Marketing Manager</div>
+            <div class="job-company">D Max Motors · Phoenix, AZ</div>
+          </div>
+          <div class="job-date">Oct 2011 – May 2013</div>
+        </div>
+        <p class="job-desc">Led a sales team to achieve monthly targets while driving marketing strategy and business growth. Analyzed market trends to optimize advertising and profitability, managed online ads and website content, and expanded the consignment business to generate additional revenue.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Sales Manager &amp; Trainer</div>
+            <div class="job-company">Peak Mazda · Flagstaff, AZ</div>
+          </div>
+          <div class="job-date">May 2009 – Jan 2011</div>
+        </div>
+        <p class="job-desc">Managed the "Peak Mazda Shoppe" at Flagstaff Mall, leading staff training and customer engagement to drive sales. Achieved break-even profitability within the first 10 days each month and facilitated 500+ referrals, resulting in 100+ vehicle sales.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <div id="education">
+    <div id="education-inner">
+      <div class="section-label">Academic Background</div>
+      <h2 class="section-title">Education &amp; Certifications</h2>
+      <div class="section-divider"></div>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <span class="edu-badge">🎓 Graduate Degree · 2024</span>
+          <div class="edu-degree">MBA, IT Management</div>
+          <div class="edu-school">Western Governors University</div>
+          <p class="edu-detail">
+            Completed a full two-year MBA program in just <span class="edu-highlight">7 months</span>, graduating with <span class="edu-highlight">NSLS Honors Recognition</span>. Focused on IT Management, bridging business strategy with technology leadership — the exact intersection where I drive the most impact.
+          </p>
+        </div>
+        <div class="edu-card">
+          <span class="edu-badge">🏅 Certification</span>
+          <div class="edu-degree">Certified Scrum Master (CSM)</div>
+          <div class="edu-school">Scrum Alliance</div>
+          <p class="edu-detail">
+            Trained and certified in Agile/Scrum methodology, with expertise in sprint planning, backlog management, team facilitation, and removing blockers for high-performing development teams.
+          </p>
+        </div>
+        <div class="edu-card">
+          <span class="edu-badge">☁️ Certification</span>
+          <div class="edu-degree">AWS Cloud Practitioner</div>
+          <div class="edu-school">Amazon Web Services</div>
+          <p class="edu-detail">
+            Certified in foundational AWS cloud concepts including compute, storage, networking, and cloud security — enabling cloud-informed decision-making in IT projects and architecture discussions.
+          </p>
+        </div>
+        <div class="edu-card">
+          <span class="edu-badge">🎓 Undergraduate Degree · 2010</span>
+          <div class="edu-degree">B.S. Business Administration, Marketing</div>
+          <div class="edu-school">Northern Arizona University · AF ROTC Det 027</div>
+          <p class="edu-detail">
+            Completed a Business Administration degree with a Marketing concentration while participating in the Air Force ROTC program, building both academic and leadership foundations early in my career.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VENTURES -->
+  <section id="ventures">
+    <div class="section-label">My World Beyond Finance</div>
+    <h2 class="section-title">Ventures &amp; Projects</h2>
+    <div class="section-divider"></div>
+    <div class="ventures-grid">
+      <a href="https://furyofzeus.com" target="_blank" class="venture-card">
+        <div class="venture-icon">⚡</div>
+        <div class="venture-name">Fury of Zeus</div>
+        <div class="venture-url">furyofzeus.com</div>
+        <p class="venture-desc">A premium beard oil brand I've been building from the ground up — combining product development, brand identity, e-commerce, and marketing strategy into a real-world entrepreneurial project.</p>
+      </a>
+      <a href="https://accelerateddynamics.org" target="_blank" class="venture-card">
+        <div class="venture-icon">🚀</div>
+        <div class="venture-name">Accelerated Dynamics</div>
+        <div class="venture-url">accelerateddynamics.org</div>
+        <p class="venture-desc">My LLC — the umbrella for professional consulting, strategic projects, and entrepreneurial endeavors. Built to operate at the intersection of technology, finance, and leadership.</p>
+      </a>
+      <a href="https://www.instagram.com/demarco_photography/" target="_blank" class="venture-card">
+        <div class="venture-icon">📷</div>
+        <div class="venture-name">Demarco Photography</div>
+        <div class="venture-url">@demarco_photography</div>
+        <p class="venture-desc">A passion project and growing creative outlet — capturing moments with a sharp eye for composition, lighting, and storytelling through the lens.</p>
+      </a>
+      <a href="https://www.linkedin.com/in/dandemarco451" target="_blank" class="venture-card">
+        <div class="venture-icon">💼</div>
+        <div class="venture-name">LinkedIn Profile</div>
+        <div class="venture-url">linkedin.com/in/dandemarco451</div>
+        <p class="venture-desc">Connect with me professionally — view my full career history, endorsements, and reach out about project management, business analysis, or consulting opportunities.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div id="contact">
+    <div id="contact-inner">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Let's Connect</h2>
+      <div class="section-divider" style="margin-left: auto; margin-right: auto;"></div>
+      <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 1rem;">
+        Open to conversations about project management, business analysis, IT strategy, and leadership roles. Based in Chandler, AZ.
+      </p>
+      <a href="mailto:dandemarco451@gmail.com" class="contact-email">dandemarco451@gmail.com</a>
+      <p class="contact-phone">(623) 451-7545 · Chandler, AZ</p>
+      <div class="connect-row" style="justify-content: center; margin-top: 3rem;">
+        <a href="https://www.linkedin.com/in/dandemarco451" target="_blank" class="social-link">
+          <span class="social-icon">💼</span> LinkedIn
+        </a>
+        <a href="https://furyofzeus.com" target="_blank" class="social-link">
+          <span class="social-icon">⚡</span> Fury of Zeus
+        </a>
+        <a href="https://accelerateddynamics.org" target="_blank" class="social-link">
+          <span class="social-icon">🚀</span> Accelerated Dynamics
+        </a>
+        <a href="https://www.instagram.com/demarco_photography/" target="_blank" class="social-link">
+          <span class="social-icon">📷</span> Photography
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Daniel Demarco, MBA, CSM · dandemarco.org · Chandler, AZ</p>
+  </footer>
+
+</body>
+</html>
